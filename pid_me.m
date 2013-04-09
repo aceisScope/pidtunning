@@ -57,7 +57,7 @@ proportionalFactor = Kp*error;
 control = proportionalFactor;
 
 %integral 
-integralFactor = Ki*sum_error;
+integralFactor = Ki*sum_error/1000;
 control = control + integralFactor;
 
 %derivative 
@@ -68,7 +68,7 @@ control = control + derivativeFactor;
 % Limit absolute current to maximum for the control (60100 * 100uA = 6.01 Amps).
 % Limit minimum current to 0.
 %Clip "control" to 0 and 'br_MaxPidControlValue'
-stepsize = 	br_MaxPidControlValue*0.001;
+stepsize = 	br_MaxPidControlValue/16;
 if (stepsize < (control - control_last)) 
     control = control + stepsize;
 end;
