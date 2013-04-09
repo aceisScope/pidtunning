@@ -1,3 +1,6 @@
+clear all;
+clc;
+
 %discrete PID simulation
 c = csv_read('cooling_P100_I100_D1000.csv'); %reading data from csv into cell
 data = c{1,1};
@@ -25,10 +28,13 @@ Kd = 1000;
 %Sampling time
 ts = 0.01;
 
+controls(1) = control;
+time(1) = ts*1;
+
 %control range [0,60100] (100uA)
 br_MaxPidControlValue = 60100.0;
 	
-for k=1:1:2000
+for k=2:1:847
 time(k) = k*ts;
 
 error_last = error;
@@ -51,11 +57,11 @@ proportionalFactor = Kp*error;
 control = proportionalFactor;
 
 %integral 
-integralFactor = ki*sum;
+integralFactor = Ki*sum_error;
 control = control + integralFactor;
 
 %derivative 
-derivativeFactor = kd*(error-error_last);
+derivativeFactor = Kd*(error-error_last);
 control = control + derivativeFactor;
 
 % Limit increases in current to 1/16 of maximum.
@@ -72,7 +78,12 @@ end;
 if ( 0 > control)
     control = 0;
 end;
+
+controls(k) = control;
 	
 end;
+
+figure(1);
+plot(time,CurrentMeasurments,'r',time,controls,'b');
 	
 
