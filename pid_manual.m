@@ -173,18 +173,14 @@ function edit1_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of edit1 as text
 %        str2double(get(hObject,'String')) returns contents of edit1 as a double
 
-% handles °üº¬figureÖĞËùÓĞÍ¼ĞÎ¶ÔÏó¾ä±úµÄ½á¹¹Ìå£¬Èç¹ûÎÒÃÇÏëÒıÓÃtagÎªmytagµÄ¿Ø¼ş£¬Ê¹ÓÃhandles.mytag
-% set/get º¯ÊıÊÇÓÃÀ´ÉèÖÃ/»ñÈ¡Ä³¸ö¿Ø¼şÊôĞÔ
-% Ê¹ÓÃgetÃüÁî»ñÈ¡µÚÒ»¸ö¼ÓÊı£¬²¢½«Ëü×ª»»³ÉÊıÖµ
-input = str2num(get(hObject,'String')); % stringÊôĞÔÊÇ×Ö·û´®£¬ËùÒÔ±ØĞë×ª»»³ÉÊıÖµ
+input = str2num(get(hObject,'String'));
 
-% ¼ìÑéÊäÈëÊÇ·ñÎª¿Õ£¬ÊÇÔò½«ËüÖÃÎª0
 if (isempty(input))
      set(hObject,'String','0')
 end
 
-% ±£´æhandles½á¹¹Ìå£¬Ö»ÒªÔÚhandles½á¹¹ÌåÓĞ¸Ä±äÊ±£¬²ÅĞèÒª±£´æ
-guidata(hObject, handles); % ÕâÀïÓÉÓÚhandlesÃ»ÓĞ¸Ä±ä£¬¹ÊÕâÀïÆäÊµÃ»ÓĞ±ØÒª£¬µ«ÊÇÎªÁË±ÜÃâÇ±ÔÚµÄ²»±ØÒªÂé·³£¬½¨ÒéÔÚËùÓĞCallback×îºó¶¼Ìí¼Ó¸ÃÃüÁî
+% ä¿å­˜handlesç»“æ„ä½“ï¼Œåªè¦åœ¨handlesç»“æ„ä½“æœ‰æ”¹å˜æ—¶ï¼Œæ‰éœ€è¦ä¿å­˜
+guidata(hObject, handles); % è¿™é‡Œç”±äºhandlesæ²¡æœ‰æ”¹å˜ï¼Œæ•…è¿™é‡Œå…¶å®æ²¡æœ‰å¿…è¦ï¼Œä½†æ˜¯ä¸ºäº†é¿å…æ½œåœ¨çš„ä¸å¿…è¦éº»çƒ¦ï¼Œå»ºè®®åœ¨æ‰€æœ‰Callbackæœ€åéƒ½æ·»åŠ è¯¥å‘½ä»¤
 
 
 % --- Executes during object creation, after setting all properties.
@@ -209,19 +205,13 @@ function edit2_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of edit2 as text
 %        str2double(get(hObject,'String')) returns contents of edit2 as a double
 
-% handles °üº¬figureÖĞËùÓĞÍ¼ĞÎ¶ÔÏó¾ä±úµÄ½á¹¹Ìå£¬Èç¹ûÎÒÃÇÏëÒıÓÃtagÎªmytagµÄ¿Ø¼ş£¬Ê¹ÓÃhandles.mytag
-% set/get º¯ÊıÊÇÓÃÀ´ÉèÖÃ/»ñÈ¡Ä³¸ö¿Ø¼şÊôĞÔ
-% Ê¹ÓÃgetÃüÁî»ñÈ¡µÚÒ»¸ö¼ÓÊı£¬²¢½«Ëü×ª»»³ÉÊıÖµ
-input = str2num(get(hObject,'String')); % stringÊôĞÔÊÇ×Ö·û´®£¬ËùÒÔ±ØĞë×ª»»³ÉÊıÖµ
+input = str2num(get(hObject,'String')); 
 
-% ¼ìÑéÊäÈëÊÇ·ñÎª¿Õ£¬ÊÇÔò½«ËüÖÃÎª0
 if (isempty(input))
      set(hObject,'String','0')
 end
 
-% ±£´æhandles½á¹¹Ìå£¬Ö»ÒªÔÚhandles½á¹¹ÌåÓĞ¸Ä±äÊ±£¬²ÅĞèÒª±£´æ
-guidata(hObject, handles); % ÕâÀïÓÉÓÚhandlesÃ»ÓĞ¸Ä±ä£¬¹ÊÕâÀïÆäÊµÃ»ÓĞ±ØÒª£¬µ«ÊÇÎªÁË±ÜÃâÇ±ÔÚµÄ²»±ØÒªÂé·³£¬½¨ÒéÔÚËùÓĞCallback×îºó¶¼Ìí¼Ó¸ÃÃüÁî
-
+guidata(hObject, handles); 
 
 % --- Executes during object creation, after setting all properties.
 function edit2_CreateFcn(hObject, eventdata, handles)
@@ -245,18 +235,13 @@ function edit3_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of edit3 as text
 %        str2double(get(hObject,'String')) returns contents of edit3 as a double
 
-% handles °üº¬figureÖĞËùÓĞÍ¼ĞÎ¶ÔÏó¾ä±úµÄ½á¹¹Ìå£¬Èç¹ûÎÒÃÇÏëÒıÓÃtagÎªmytagµÄ¿Ø¼ş£¬Ê¹ÓÃhandles.mytag
-% set/get º¯ÊıÊÇÓÃÀ´ÉèÖÃ/»ñÈ¡Ä³¸ö¿Ø¼şÊôĞÔ
-% Ê¹ÓÃgetÃüÁî»ñÈ¡µÚÒ»¸ö¼ÓÊı£¬²¢½«Ëü×ª»»³ÉÊıÖµ
-input = str2num(get(hObject,'String')); % stringÊôĞÔÊÇ×Ö·û´®£¬ËùÒÔ±ØĞë×ª»»³ÉÊıÖµ
+input = str2num(get(hObject,'String')); 
 
-% ¼ìÑéÊäÈëÊÇ·ñÎª¿Õ£¬ÊÇÔò½«ËüÖÃÎª0
 if (isempty(input))
      set(hObject,'String','0')
 end
 
-% ±£´æhandles½á¹¹Ìå£¬Ö»ÒªÔÚhandles½á¹¹ÌåÓĞ¸Ä±äÊ±£¬²ÅĞèÒª±£´æ
-guidata(hObject, handles); % ÕâÀïÓÉÓÚhandlesÃ»ÓĞ¸Ä±ä£¬¹ÊÕâÀïÆäÊµÃ»ÓĞ±ØÒª£¬µ«ÊÇÎªÁË±ÜÃâÇ±ÔÚµÄ²»±ØÒªÂé·³£¬½¨ÒéÔÚËùÓĞCallback×îºó¶¼Ìí¼Ó¸ÃÃüÁî
+guidata(hObject, handles); 
 
 
 % --- Executes during object creation, after setting all properties.
@@ -281,6 +266,14 @@ function edit4_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of edit4 as text
 %        str2double(get(hObject,'String')) returns contents of edit4 as a double
 
+input = str2num(get(hObject,'String')); 
+
+if (isempty(input))
+     set(hObject,'String','0')
+end
+
+guidata(hObject, handles); 
+
 
 % --- Executes during object creation, after setting all properties.
 function edit4_CreateFcn(hObject, eventdata, handles)
@@ -301,18 +294,18 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-a = get(handles.edit1,'String');
-b = get(handles.edit2,'String');
-% aºÍbÊÇ×Ö·û´®±äÁ¿£¬ÎÒÃÇĞèÒªÊ¹ÓÃstr2doubleº¯Êı½«Æä×ª»»ÎªÊıÖµ
-% È»ºó²ÅÄÜÏà¼Ó£¬·ñÔò×Ö·û´®ÊÇÃ»·¨Ïà¼ÓµÄ
-total = str2num(a) + str2num(b);  % ¸ñÊ½×ª»»£¬×ª»»ÎªÊıÖµ
-% ÓÉÓÚstringÊôĞÔÊÇ×Ö·û´®£¬ËùÒÔ±ØĞë½«Á½¸öÊıµÄºÍ×ª»»Îª×Ö·û´®
-c = num2str(total); % ×ª»»Îª×Ö·û´®
-%  ½«½á¹û¸³Öµ¸øanswer_staticText¿Õ¼äµÄstringÊôĞÔ£¬ÓÚÊÇ¾Í¿ÉÒÔÏÔÊ¾½á¹ûÁË
-set(handles.edit3,'String',c);
-c
-guidata(hObject, handles); % ¸üĞÂ½á¹¹Ìå
+Ki = get(handles.edit1,'String');
+Kp = get(handles.edit2,'String');
+Kd = get(handles.edit3,'String');
 
+SP = get(handles.edit4,'String');
+
+guidata(hObject, handles); 
+
+%pid simulation function here
+
+%plot here
+axes(handles.axes1);
 
 % --- Executes on button press in pushbutton5.
 function pushbutton5_Callback(hObject, eventdata, handles)

@@ -65,17 +65,18 @@ derivativeFactor = Kd*(error-error_last);
 control = control + derivativeFactor;
 
 % Limit increases in current to 1/16 of maximum.
+stepsize = br_MaxPidControlValue/16;
+
 % Limit absolute current to maximum for the control (60100 * 100uA = 6.01 Amps).
 % Limit minimum current to 0.
 %Clip "control" to 0 and 'br_MaxPidControlValue'
-stepsize = 	br_MaxPidControlValue/16;
 if (stepsize < (control - control_last)) 
     control = control + stepsize;
 end;
 if ( br_MaxPidControlValue < control)
     control = br_MaxPidControlValue;
 end;
-if ( 0 > control)
+if ( control < 0)
     control = 0;
 end;
 
