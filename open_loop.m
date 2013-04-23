@@ -12,4 +12,9 @@ current_t = data (:,3);
 detector_t = data (:,4);
 
 figure(1);
+title('Sine Function');
 plot(cputime,current_t,'r',cputime,detector_t,'b');
+xlabel('time');
+ylabel('temperature');
+axis([cputime(1),cputime(end),0,detector_t(end)]);
+
