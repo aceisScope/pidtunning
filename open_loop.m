@@ -38,8 +38,13 @@ tau = 1.063;
 T = cputime(204); %where y(t)= y(inf)*63.2%
 
 %fitcurve
-start_point = [K T tau current_t(1)];
+start_point = [K T tau current_t(1)]';
 [estimates,mode1]=fitcurve(cputime,current_t,start_point);
+
+% K = estimates(1);
+% T = estimates(2);
+% tau = estimates(3);
+
 
 check = [];
 for i = 1:length(cputime)
