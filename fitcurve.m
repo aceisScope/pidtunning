@@ -5,11 +5,11 @@ estimates=fminsearch(model,start_point);
         A=params(1);
         tr=params(2);
         to=params(3);
-        do=params(4);
+%         do=params(4);
         U=zeros(size(xdata-to)); 
         U((xdata-to)>=0)=1; 
-        FittedCurve=(1- exp(-(xdata - to)./tr))*A; 
-        FittedCurve=FittedCurve.*U+do; 
+        FittedCurve=(1- exp(-(xdata - to)./tr))*A ; 
+        FittedCurve=FittedCurve.*U; 
         ErorVector=FittedCurve-ydata; 
         sse=sum(ErorVector.^2);
    end
