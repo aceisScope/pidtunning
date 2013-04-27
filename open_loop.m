@@ -71,5 +71,8 @@ end
 hold on;
 plot(cputime,check,'black');
 
+%step of tf
+sys = tf([K],[T 1],'ioDelay',tau);
+step(sys); 
 
 legend('current temperature','engineering estimate','fit curve');
