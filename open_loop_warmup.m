@@ -16,7 +16,7 @@ current_t = data (:,3); %cold finger
 do = current_t(1);
 current_t = current_t - do;
 
-detector_t = data (:,4); %dector
+detector_t = data (:,4); %detector
 tec_current2 = data (:,5);
 
 figure(1);
@@ -41,7 +41,7 @@ tau = (t2*log(1-y1/y_stable) - t1*log(1-y2/y_stable))/(log(1-y1/y_stable) - log(
 %estimate
 K = y_stable - current_t(1);
 tau = 1.063;
-T = cputime(204) - tau; %where y(t)= y(inf)*63.2
+T = cputime(204) - tau; %where y(t)= y(inf)*63.2%
 
 check = [];
 for i = 1:length(cputime)
