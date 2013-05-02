@@ -58,6 +58,7 @@ plot(cputime,check,'black');
 %step of tf
 sys = tf([K],[T 1],'ioDelay',tau);
 step(sys); 
+title('cooldown 20130419 13.24.44');
 
 legend('current temperature','engineering estimate','fit curve');
 
@@ -119,5 +120,6 @@ plot(cputime,check,'black');
 %step of tf
 sys = tf([K],[T 1],'ioDelay',tau);
 step(sys); 
+title('cooldown 20130419 15.45.06');
 
 legend('current temperature','engineering estimate','fit curve');
