@@ -4,25 +4,25 @@ clear all;
 clc;
 
 T=184.8891; K=77.8135; tau= 3.691;  % System Parameters
-refe = 2430;                 % Setpoint
+setpoint = 2430*0.1 - 273.15;         % setpoint, Celsius
 Tf = 1200;                 % Simulation time
 yold = 0;yold1=0;
 yp = []; ys_prime = [];
-er = refe;                 % Error (Initial error = Reference)       
+er = setpoint;                 % Error (Initial error = setpoint)       
 er1 = 0;                   % First derivative of error
 er2 = 0;                   % Second derivative of error
-eold = refe; eold2 = 0;
+eold = setpoint; eold2 = 0;
 dt = 1;
 for i=1:dt:Tf
     dtspan = [i i+dt];
     eold2 = eold ;
     eold = er;
-    er = refe - yold;
+    er = setpoint - yold; %增量式PID控制
     er2 = er + eold2 - 2*eold;
     er1 = er - eold;
     init_con = [yold ; (yold-yold1)]; % Initial conditions for the diffirential equations
-    [t,y]  = ode45(@pid_ctrl,dtspan,init_con,[],er,er1,er2); 
     yold1 = yold;
+    [t,y]  = ode45(@pid_ctrl,dtspan,init_con,[],er,er1,er2); 
     ys = y(length(y),1);
     if i <= tau
         ys_prime = [0 ys_prime];
