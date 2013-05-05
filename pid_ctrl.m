@@ -13,7 +13,5 @@ T=184.8891; K=77.8135; tau= 3.691;   % System parametrs
 % PID Controller parametrs by Ziegler-Nichols method 
 Kp = 1.2*(tau/T)^(-1)/K; Ki = Kp/(T*2*(tau/T)); Kd = Kp*(T*0.5*(tau/T));
 
-%yprime = [y(2); ((1/T)*(-y(2)+ K*Kd*er2 + K*Kp*er1 + K*Ki*er))];%increment
-
-% u = K*Kd*er2 + K*Ki*er1 + K*Kp*er;
-yprime = [y(2); ((1/T)*(-y(2)+ K*Kd*er2 + K*Ki*er1 + K*Kp*er))];
+yprime = [y(2); ((1/T)*(-y(2)+ K*Kd*er2 + K*Kp*er1 + K*Ki*er))];%increment
+%yprime = [y(2); ((1/T)*(-y(2)+ K*Kd*er2 + K*Ki*er1 + K*Kp*er))];

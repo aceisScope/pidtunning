@@ -6,7 +6,7 @@ clf;
 
 T=184.8891; K=77.8135; tau= 3.691;  % System Parameters
 setpoint = 2430*0.1 - 273.15;         % setpoint, Celsius
-Tf = 1000;                 % Simulation time
+Tf = 1500;                 % Simulation time
 dt = 1;
 
 yold = 0;yold1=0;
