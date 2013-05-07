@@ -31,9 +31,9 @@ Kp = (1.35*(tau/T)^(-1) + 0.27)/K ; Ki = Kp/(((2.5*tau/T+ 0.5*(tau/T)^2)/(1 + 0.
 % PID Controller parametrs by Ziegler-Nichols method 
 %Kp = 1.2*(tau/T)^(-1)/K; Ki = Kp/(T*2*(tau/T)); Kd = Kp*(T*0.5*(tau/T));
 
-Kp = Kp * 30;
-Ki = Ki * 100;
-Kd = Kd * 100;
+% Kp = Kp * 100;
+% Ki = Ki * 30;
+% Kd = Kd * 30;
 
 for k=1:1:Tf
     time(k)=k*dt;
