@@ -11,11 +11,11 @@ uplimit = br_MaxPidControlValue/16;
 br_MaxErrorValue = abs(80 - 273.15); %Maximum error values will be ~800 or 80 degK
 
 
-Tf = 1000;                 % Simulation time
+Tf = 2000;                 % Simulation time
 dt = 1;
 
-sys=tf([K],[T 1],'ioDelay',tau);
-dsys=c2d(sys,dt,'z');
+Gp = tf([K],[T 1],'ioDelay',tau);  % actually Gp(s) = -K*exp(-tau*s)/(T*s+1), i.e. Yp(t)= -K*u + exp(-t/T)*K*u 
+dsys=c2d(Gp,dt,'z');
 [num,den]=tfdata(dsys,'v');
 
 u_1=0;u_2=0; 
@@ -31,9 +31,11 @@ Kp = (1.35*(tau/T)^(-1) + 0.27)/K ; Ki = Kp/(((2.5*tau/T+ 0.5*(tau/T)^2)/(1 + 0.
 % PID Controller parametrs by Ziegler-Nichols method 
 %Kp = 1.2*(tau/T)^(-1)/K; Ki = Kp/(T*2*(tau/T)); Kd = Kp*(T*0.5*(tau/T));
 
-% Kp = Kp * 100;
-% Ki = Ki * 30;
-% Kd = Kd * 30;
+
+N = 1;
+num_c = [Kp*Ki*Kd*(1+1)/1,Kp*(Ki+Kd/N),Kp];
+den_c = Ki*[Kd/N,1,0];
+Gc = tf(num_c,den_c);   %transfer function of Gc(s)
 
 for k=1:1:Tf
     time(k)=k*dt;
@@ -50,14 +52,16 @@ for k=1:1:Tf
     if br_MaxPidControlValue < u(k)
        u(k)= br_MaxPidControlValue;
     end
+    
 
     %Linear model
     if time(k) <= tau
         yout(k)= startpoint;
     else
-        yout(k)=-den(2)*y_1+num(2)*u_1;
+        %yout(k)=-den(2)*y_1+num(2)*u_1;
+        yout(k)= -K*u(k) + exp(-time(k)/T)*(K*u(k) + startpoint); 
     end
-    error(k)=setpoint-yout(k);
+    error(k)=yout(k)-setpoint;
     
     % Restricting error: Maximum error values will be ~800 or 80 degK
     if br_MaxErrorValue <= error
@@ -79,7 +83,7 @@ for k=1:1:Tf
     if br_MaxPidControlValue <= x(3)
         x(3) = br_MaxPidControlValue;
     end
-    if x(3) <= -br_MaxPidControlValue
+    if x(3) <= -br_MaxPidControlValue 
         x(3) = -br_MaxPidControlValue;
     end
 
