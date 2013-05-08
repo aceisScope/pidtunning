@@ -10,7 +10,7 @@ uplimit = br_MaxPidControlValue/16;
 br_MaxErrorValue = abs(80 - 273.15); %Maximum error values will be ~800 or 80 degK
 
 
-Tf = 100;                 % Simulation time
+Tf = 2000;                 % Simulation time
 dt = 1;
 
 sys=tf([K],[T 1],'ioDelay',tau);
@@ -30,6 +30,9 @@ u_old = 0;
 % PID Controller parametrs by Ziegler-Nichols method 
 Kp = 1.2*(tau/T)^(-1)/K; Ki = Kp/(T*2*(tau/T)); Kd = Kp*(T*0.5*(tau/T));
 Ki = Ki/1000;
+
+% PID Controller parametrs by Jorgen Hahn PID_Designer
+%Kp = 0.033146;Ki = 0.000199;Kd = 1.381749;
 
 for k=1:1:Tf
     time(k)=k*dt;
