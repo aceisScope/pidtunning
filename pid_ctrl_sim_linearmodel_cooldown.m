@@ -29,9 +29,14 @@ u_old = 0;
 %Kp = (1.35*(tau/T)^(-1) + 0.27)/K; Ki = Kp/(((2.5*tau/T+ 0.5*(tau/T)^2)/(1 + 0.6*tau/T))*T); Kd = Kp* (0.37*(tau/T)/(1 + 0.2*(tau/T)))*T; 
 % PID Controller parametrs by Ziegler-Nichols method 
 Kp = 1.2*(tau/T)^(-1)/K; Ki = Kp/(T*2*(tau/T)); Kd = Kp*(T*0.5*(tau/T));
+Ki = Ki/1000;
 
 for k=1:1:Tf
     time(k)=k*dt;
+    
+    proportionalFactor(k) = Kp*x(1);
+    integralFactor(k) = Ki*x(3);
+    derivativeFactor(k) = Kd*x(2);
     
     u(k)=Kp*x(1)+Kd*x(2)+Ki*x(3);   %PID Controller
 
