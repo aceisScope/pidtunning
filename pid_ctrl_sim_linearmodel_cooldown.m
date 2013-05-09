@@ -29,7 +29,6 @@ u_old = 0;
 %Kp = (1.35*(tau/T)^(-1) + 0.27)/K; Ki = Kp/(((2.5*tau/T+ 0.5*(tau/T)^2)/(1 + 0.6*tau/T))*T); Kd = Kp* (0.37*(tau/T)/(1 + 0.2*(tau/T)))*T; 
 % PID Controller parametrs by Ziegler-Nichols method 
 Kp = 1.2*(tau/T)^(-1)/K; Ki = Kp/(T*2*(tau/T)); Kd = Kp*(T*0.5*(tau/T));
-Ki = Ki/1000;
 
 % PID Controller parametrs by Jorgen Hahn PID_Designer
 %Kp = 0.033146;Ki = 0.000199;Kd = 1.381749;
